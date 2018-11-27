@@ -1,0 +1,23 @@
+/**
+ * BlogService
+ */
+app.factory('BlogService',function($http){
+	var blogService={}
+	
+	blogService.addBlog=function(blog){
+		return $http.post("http://localhost:9090/middleware_Collab/addblogpost",blog)
+	}
+	blogService.getBlogsWaitingForApproval=function(){
+		return $http.get("http://localhost:9090/middleware_Collab/blogswaitingforapproval")
+	}
+	
+	blogService.getBlogsApproved=function(){
+		return $http.get("http://localhost:9090/middleware_Collab/blogsapproved")
+	}
+	
+	blogService.getBlog=function(blogPostId){
+		return $http.get("http://localhost:9090/middleware_Collab/getBlog/"+blogPostId)
+	}
+	
+	return blogService;
+})
